@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+:root {
+  --surface-bg: #FFFFFF;
+  --card-bg: #F8F9FA;
+  --text-color: #202124;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-bg: #121212;
+    --card-bg: #28292A;
+    --text-color: #E8EAED;
+  }
+}
+
+body {
+  background-color: var(--surface-bg);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-total {
+    grid-column: span 2;
+  }
+}
+
+.meal-card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meal-card h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-color);
+  letter-spacing: -0.01em;
+}
+
+/* Desayuno: #EA4335 */
+.card-desayuno {
+  border-top: 4px solid #EA4335;
+  border-left: 1px solid #EA4335;
+  border-right: 1px solid #EA4335;
+  border-bottom: 1px solid #EA4335;
+}
+
+/* Almuerzo: #34A853 */
+.card-almuerzo {
+  border-top: 4px solid #34A853;
+  border-left: 1px solid #34A853;
+  border-right: 1px solid #34A853;
+  border-bottom: 1px solid #34A853;
+}
+
+/* Merienda: #4285F4 */
+.card-merienda {
+  border-top: 4px solid #4285F4;
+  border-left: 1px solid #4285F4;
+  border-right: 1px solid #4285F4;
+  border-bottom: 1px solid #4285F4;
+}
+
+/* Cena: #FBBC05 */
+.card-cena {
+  border-top: 4px solid #FBBC05;
+  border-left: 1px solid #FBBC05;
+  border-right: 1px solid #FBBC05;
+  border-bottom: 1px solid #FBBC05;
+}
+
+/* Total: gradiente de los 4 colores */
+.card-total {
+  position: relative;
+  border: none;
+}
+
+.card-total::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 4px 1px 1px 1px;
+  background: linear-gradient(135deg, #EA4335, #34A853, #4285F4, #FBBC05);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-desayuno {
+    border-top-color: #F28B82;
+    border-left-color: #F28B82;
+    border-right-color: #F28B82;
+    border-bottom-color: #F28B82;
+  }
+  .card-almuerzo {
+    border-top-color: #81C995;
+    border-left-color: #81C995;
+    border-right-color: #81C995;
+    border-bottom-color: #81C995;
+  }
+  .card-merienda {
+    border-top-color: #8AB4F8;
+    border-left-color: #8AB4F8;
+    border-right-color: #8AB4F8;
+    border-bottom-color: #8AB4F8;
+  }
+  .card-cena {
+    border-top-color: #FDD663;
+    border-left-color: #FDD663;
+    border-right-color: #FDD663;
+    border-bottom-color: #FDD663;
+  }
+  .card-total::before {
+    background: linear-gradient(135deg, #F28B82, #81C995, #8AB4F8, #FDD663);
+  }
+}

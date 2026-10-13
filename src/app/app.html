@@ -1,0 +1,14 @@
+<main class="cards-container">
+  @for (card of cards; track card.name; let i = $index) {
+    <div 
+      class="meal-card"
+      [class.card-desayuno]="i === 0"
+      [class.card-almuerzo]="i === 1"
+      [class.card-merienda]="i === 2"
+      [class.card-cena]="i === 3"
+      [class.card-total]="i === 4"
+    >
+      <h2>{{ card.name }}</h2>
+    </div>
+  }
+</main>
